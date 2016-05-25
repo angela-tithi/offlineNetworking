@@ -15,25 +15,18 @@ import javafx.stage.Stage;
 
 public class TCPClient extends Application
 {
-    @FXML
-    public TextArea messageArea ;
-    
-    @FXML
-    public TextField messageField ;
-    
-    @FXML
-    public Button Send ;
-    
+   
+    public static String modifiedSentence;
     
     public static void main(String args[]) throws Exception
     {
         launch(args);
         
         String sentence;
-        String modifiedSentence;
+        
         
         BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
-        Socket clientSocket = new Socket("localhost", 1237);
+        Socket clientSocket = new Socket("localhost", 12380);
         DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
         BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         while(true)
@@ -55,6 +48,12 @@ public class TCPClient extends Application
        
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+    }
+    
+    public void send(TextArea area,TextField field){
+        field.clear();
+        area.appendText(modifiedSentence);
         
     }
 }

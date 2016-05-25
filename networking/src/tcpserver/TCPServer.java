@@ -10,8 +10,7 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 public class TCPServer extends Application
 {
-    @FXML
-    private TextArea serverStuffs ;
+   
     
     public static void main(String argv[]) throws Exception
     {
@@ -20,7 +19,7 @@ public class TCPServer extends Application
         int workerThreadCount = 0;
         int id = 1;
         ServerSocket welcomeSocket;
-        welcomeSocket = new ServerSocket(1237);
+        welcomeSocket = new ServerSocket(12380);
         while(true)
         {
             Socket connectionSocket = welcomeSocket.accept();
